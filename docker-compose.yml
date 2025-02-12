@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  axonserver:
+    container_name: axonserver
+    image: axoniq/axonserver
+    ports:
+      - "8024:8024"
+      - "8124:8124"
+    volumes:
+      - axonserver-data:axonserver/data
+      - axonserver-events:axonserver/eventdata
+      - axonserver-config:axonserver/config
+
+volumes:
+  axonserver-data:
+  axonserver-events:
+  axonserver-config:
