@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   axonserver:
     container_name: axonserver
@@ -8,9 +6,9 @@ services:
       - "8024:8024"
       - "8124:8124"
     volumes:
-      - axonserver-data:axonserver/data
-      - axonserver-events:axonserver/eventdata
-      - axonserver-config:axonserver/config
+      - axonserver-data:/axonserver/data
+      - axonserver-events:/axonserver/eventdata
+      - axonserver-config:/axonserver/config
 
 volumes:
   axonserver-data:
