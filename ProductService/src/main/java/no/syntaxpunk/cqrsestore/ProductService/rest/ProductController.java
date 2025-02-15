@@ -2,10 +2,7 @@ package no.syntaxpunk.cqrsestore.ProductService.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/products")
@@ -20,7 +17,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public String createProduct() {
-        return "product created";
+    public String createProduct(@RequestBody CreateProductRestModel createProductRestModel) {
+        return "product created: " + createProductRestModel.getTitle();
     }
 }

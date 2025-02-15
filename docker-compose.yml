@@ -9,6 +9,13 @@ services:
       - axonserver-data:/axonserver/data
       - axonserver-events:/axonserver/eventdata
       - axonserver-config:/axonserver/config
+    environment:
+      #- AXONIQ_AXONSERVER_PORT=8024
+      - AXONIQ_AXONSERVER_NAME=DJ Axon Server
+      - AXONIQ_AXONSERVER_HOSTNAME=localhost
+      - AXONIQ_AXONSERVER_DEVMODE_ENABLED=true
+
+
 
 volumes:
   axonserver-data:
