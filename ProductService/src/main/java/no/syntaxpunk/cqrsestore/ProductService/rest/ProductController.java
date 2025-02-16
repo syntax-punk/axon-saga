@@ -35,7 +35,7 @@ public class ProductController {
             .build();
 
         String returnValue;
-        
+
         try {
             returnValue = commandGateway.sendAndWait(createProductCommand);
         } catch (Exception ex) {
