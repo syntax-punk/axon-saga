@@ -1,6 +1,7 @@
 package no.syntaxpunk.cqrsestore.ProductService.command;
 
 import no.syntaxpunk.cqrsestore.ProductService.core.events.ProductCreatedEvent;
+import no.syntaxpunk.cqrsestore.ProductService.service.ProductService;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -12,7 +13,6 @@ import java.math.BigDecimal;
 
 @Aggregate
 public class ProductAggregate {
-
     @AggregateIdentifier
     private String productId;
     private String title;
