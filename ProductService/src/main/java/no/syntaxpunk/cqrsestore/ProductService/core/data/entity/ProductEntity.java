@@ -7,17 +7,19 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "products")
 @Data
-public class ProductDto implements Serializable {
+public class ProductEntity implements Serializable {
     @Id
     @Column(unique = true)
     private String productId;
 
     @Column(unique = true)
     private String title;
-    private double price;
+    private BigDecimal price;
     private int quantity;
 }

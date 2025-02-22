@@ -1,9 +1,7 @@
 package no.syntaxpunk.cqrsestore.ProductService.rest;
 
 import no.syntaxpunk.cqrsestore.ProductService.command.CreateProductCommand;
-import no.syntaxpunk.cqrsestore.ProductService.service.ProductService;
 import org.axonframework.commandhandling.gateway.CommandGateway;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,12 +13,10 @@ public class ProductController {
 
     private final Environment env;
     private final CommandGateway commandGateway;
-    private final ProductService productService;
 
-    public ProductController(Environment env, CommandGateway commandGateway, ProductService productService) {
+    public ProductController(Environment env, CommandGateway commandGateway) {
         this.env = env;
         this.commandGateway = commandGateway;
-        this.productService = productService;
     }
 
     @GetMapping
@@ -41,8 +37,6 @@ public class ProductController {
 
         try {
             returnValue = commandGateway.sendAndWait(createProductCommand);
-
-            this.productService.createProduct(createProductCommand);
         } catch (Exception ex) {
             returnValue = ex.getLocalizedMessage();
         }
