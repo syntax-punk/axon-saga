@@ -19,11 +19,6 @@ public class ProductsCommandController {
         this.commandGateway = commandGateway;
     }
 
-    @GetMapping
-    public String getProducts() {
-        return "getting products: " + env.getProperty("local.server.port");
-    }
-
     @PostMapping
     public String createProduct(@RequestBody CreateProductRestModel createProductRestModel) {
         var createProductCommand = CreateProductCommand.builder()
