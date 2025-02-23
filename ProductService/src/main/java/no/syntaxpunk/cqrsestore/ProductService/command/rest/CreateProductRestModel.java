@@ -1,4 +1,4 @@
-package no.syntaxpunk.cqrsestore.ProductService.rest;
+package no.syntaxpunk.cqrsestore.ProductService.command.rest;
 
 import lombok.Data;
 

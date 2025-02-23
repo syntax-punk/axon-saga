@@ -1,4 +1,4 @@
-package no.syntaxpunk.cqrsestore.ProductService.rest;
+package no.syntaxpunk.cqrsestore.ProductService.command.rest;
 
 import no.syntaxpunk.cqrsestore.ProductService.command.CreateProductCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
@@ -9,12 +9,12 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/products")
-public class ProductController {
+public class ProductsCommandController {
 
     private final Environment env;
     private final CommandGateway commandGateway;
 
-    public ProductController(Environment env, CommandGateway commandGateway) {
+    public ProductsCommandController(Environment env, CommandGateway commandGateway) {
         this.env = env;
         this.commandGateway = commandGateway;
     }
