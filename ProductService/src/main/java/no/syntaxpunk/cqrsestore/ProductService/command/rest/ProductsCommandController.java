@@ -1,5 +1,6 @@
 package no.syntaxpunk.cqrsestore.ProductService.command.rest;
 
+import jakarta.validation.Valid;
 import no.syntaxpunk.cqrsestore.ProductService.command.CreateProductCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.core.env.Environment;
@@ -20,7 +21,7 @@ public class ProductsCommandController {
     }
 
     @PostMapping
-    public String createProduct(@RequestBody CreateProductRestModel createProductRestModel) {
+    public String createProduct(@Valid @RequestBody CreateProductRestModel createProductRestModel) {
         var createProductCommand = CreateProductCommand.builder()
             .productId(UUID.randomUUID().toString())
             .title(createProductRestModel.getTitle())
