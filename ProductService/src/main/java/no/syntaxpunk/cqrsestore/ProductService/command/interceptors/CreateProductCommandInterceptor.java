@@ -30,7 +30,7 @@ public class CreateProductCommandInterceptor implements MessageDispatchIntercept
 
             if (CreateProductCommand.class.equals(command.getPayloadType())) {
                 // Validate createProductCommand
-                var createProductCommand = (CreateProductCommand) command;
+                var createProductCommand = (CreateProductCommand) command.getPayload();
 
                 var productLookupEntity =
                         productLookupRepository.findByProductIdOrTitle(createProductCommand.getProductId(), createProductCommand.getTitle());
