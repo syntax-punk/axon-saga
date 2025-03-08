@@ -1,6 +1,6 @@
 #FileLock
-#Sun Mar 02 22:21:32 CET 2025
+#Sat Mar 08 13:02:50 CET 2025
 hostName=insomniac.lan
-id=19558bc54eeaf700594d943b288d1847c25a987fb27
+id=19575a2f9c58b801302dc45c0e29a06c08df9256af5
 method=file
-server=192.168.86.138\:50444
+server=192.168.86.174\:54865
