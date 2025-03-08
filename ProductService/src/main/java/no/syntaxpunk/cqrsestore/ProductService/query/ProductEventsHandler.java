@@ -5,6 +5,7 @@ import no.syntaxpunk.cqrsestore.ProductService.core.data.entity.ProductEntity;
 import no.syntaxpunk.cqrsestore.ProductService.core.events.ProductCreatedEvent;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
+import org.axonframework.messaging.interceptors.ExceptionHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -17,11 +18,24 @@ public class ProductEventsHandler {
         this.productsRepository = productsRepository;
     }
 
+    @ExceptionHandler(resultType = IllegalAccessException.class)
+    public void handle(IllegalArgumentException exception) {
+
+    }
+
+    @ExceptionHandler(resultType = Exception.class)
+    public void handle(Exception exception) {
+
+    }
+
     @EventHandler
     public void on(ProductCreatedEvent event) {
         var productEntity = new ProductEntity();
         BeanUtils.copyProperties(event, productEntity);
-
-        productsRepository.save(productEntity);
+        try {
+            productsRepository.save(productEntity);
+        } catch (IllegalArgumentException ex) {
+            ex.printStackTrace();
+        }
     }
 }
