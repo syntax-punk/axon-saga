@@ -21,12 +21,16 @@ public class ProductAggregate {
     public ProductAggregate() {}
 
     @CommandHandler
-    public ProductAggregate(CreateProductCommand createProductCommand) {
+    public ProductAggregate(CreateProductCommand createProductCommand) throws Exception {
         var productCreatedEvent = new ProductCreatedEvent();
 
         BeanUtils.copyProperties(createProductCommand, productCreatedEvent);
 
         AggregateLifecycle.apply(productCreatedEvent);
+
+        if (true) {
+            throw new Exception("Error took place in CreateProductCommand @CommandHandler");
+        }
     }
 
     @EventSourcingHandler
