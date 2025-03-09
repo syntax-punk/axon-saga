@@ -24,18 +24,23 @@ public class ProductEventsHandler {
     }
 
     @ExceptionHandler(resultType = Exception.class)
-    public void handle(Exception exception) {
-
+    public void handle(Exception exception) throws Exception {
+        throw exception;
     }
 
     @EventHandler
-    public void on(ProductCreatedEvent event) {
+    public void on(ProductCreatedEvent event) throws Exception {
         var productEntity = new ProductEntity();
         BeanUtils.copyProperties(event, productEntity);
+
         try {
             productsRepository.save(productEntity);
         } catch (IllegalArgumentException ex) {
             ex.printStackTrace();
+        }
+
+        if (true) {
+            throw new Exception("Exception is forced in the event handler class");
         }
     }
 }
